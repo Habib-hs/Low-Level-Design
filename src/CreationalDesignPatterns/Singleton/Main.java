@@ -1,10 +1,10 @@
-package Singleton;
+package CreationalDesignPatterns.Singleton;
 
 public class Main{
     public static void main(String[] args) {
         // Get the Singleton instance of the DatabaseConnectionManager
-        DatabaseConnectionManager dbManager1 = DatabaseConnectionManager.getInstance();
-        DatabaseConnectionManager dbManager2 = DatabaseConnectionManager.getInstance();
+       Singleton.DatabaseConnectionManager dbManager1 = Singleton.DatabaseConnectionManager.getInstance();
+       Singleton.DatabaseConnectionManager dbManager2 = Singleton.DatabaseConnectionManager.getInstance();
 
         // Fetch the connection from both instances
         String connection1 = dbManager1.getConnection();
