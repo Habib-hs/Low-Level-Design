@@ -12,7 +12,9 @@ public class DatabaseProxy {
         if(cache.containsKey(query)){
             System.out.println("Returning cached result for query: " + query);
             return cache.get(query);
-        }else{   // Initialize the real database if not already done
+        }
+
+        if (realDatabase == null) {
             System.out.println("Initializing Database lazily...");
             realDatabase = new Database();
         }
