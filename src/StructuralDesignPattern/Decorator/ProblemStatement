@@ -1,0 +1,56 @@
+Problem Statement
+You are building a Food Delivery App that initially only supports basic orders (e.g., ordering food and calculating the total price).
+
+After the app launches, new features are requested:
+
+Gift Wrapping – Wrap the order for special occasions.
+Priority Delivery – Deliver the order faster.
+Discount – Apply a discount for promotional offers.
+Challenges:
+
+Each customer can choose any combination of features (e.g., one customer might want gift wrapping + priority delivery, another might only want a discount).
+Future-proofing: In the future, you might need to add new features, such as “Eco-Friendly Packaging” or “Personalized Notes.”
+Modifying the existing class for every new feature would make the code complex, hard to maintain, and violate the Open-Closed Principle (code should be open for extension but closed for modification).
+You need a design that allows:
+
+Adding features dynamically without rewriting the core system.
+Combining features flexibly without creating many subclasses.
+The ability to scale easily as new features are introduced.
+Traditional Solution
+In a traditional approach, you might create separate subclasses for each combination of features. For example:
+
+BasicOrder – A regular order.
+GiftWrappedOrder – A basic order with gift wrapping.
+PriorityDeliveryOrder – A basic order with priority delivery.
+GiftWrappedPriorityOrder – A gift-wrapped order with priority delivery.
+DiscountedPriorityOrder – A discounted order with priority delivery.
+Drawbacks:
+
+As the number of features increases, the number of subclasses grows exponentially, leading to a class explosion.
+Each new feature requires modifying existing classes, breaking the Open-Closed Principle.
+Common logic (e.g., price calculation) is duplicated across subclasses, making maintenance difficult.
+How the Decorator Pattern Solves the Problem
+The Decorator Pattern solves these issues by dynamically adding features using wrappers instead of creating multiple subclasses.
+
+Start with a BasicOrder class for a simple order.
+Create separate classes for each feature (e.g., GiftWrap, PriorityDelivery, Discount).
+Instead of creating a new class for every combination, wrap the basic order with feature classes as needed.
+For example:
+
+A basic order is created.
+To add gift wrapping, wrap it with a GiftWrap decorator.
+To add priority delivery, wrap it with a PriorityDelivery decorator.
+To add a discount, wrap the result with a Discount decorator.
+This approach makes the code flexible, easy to maintain, and scalable for future features.
+
+Benefits of the Decorator Pattern
+No Class Explosion: Only one base class and one class per feature are needed.
+Dynamic Combinations: Features can be added or removed at runtime in any combination.
+Future-Proof: Adding new features (e.g., "Eco-Friendly Packaging") requires creating a single decorator class without modifying existing code.
+Reusable Features: Each feature is implemented independently, making it reusable in other parts of the application.
+Use Cases
+E-commerce Systems: Add shipping options, gift wrapping, or promotional discounts dynamically to orders.
+Streaming Services: Add features like offline downloads, HD streaming, or multi-user accounts dynamically to subscription plans.
+Gaming: Add upgrades like extra health, shields, or weapons to a player dynamically.
+UI Design: Add visual elements like scrollbars, borders, or shadows to components dynamically.
+By using the Decorator Pattern, you ensure a clean, flexible, and maintainable design for your evolving Food Delivery App.
